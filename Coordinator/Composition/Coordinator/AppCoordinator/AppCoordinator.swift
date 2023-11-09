@@ -13,6 +13,7 @@ class AppCoordinator: Coordinator {
     var factory: AppFactory?
     var autharization: SessionCheckerAuth?
     private var logInCoordinator: Coordinator?
+    private var mainTabBarCoordinator: Coordinator?
     
     init(navigation: UINavigationController, window: UIWindow?, factory: AppFactory?, autharization: AuthorizationService?) {
         self.navigation = navigation
@@ -33,20 +34,39 @@ class AppCoordinator: Coordinator {
     
     private func startSomeCoordinator() {
         guard let autharization else { return }
-        if autharization.isSessionActive {
-            print("show TabBar")
-        } else {
-            logInCoordinator = factory?.makeLogInCoordinator(navigation: navigation,
-                                                                 delegate: self)
-            logInCoordinator?.start()
-        }
+        autharization.isSessionActive ? startMainTabBarCoordinator() : startLoginCoordinator()
     }
+    
+    private func startLoginCoordinator() {
+        logInCoordinator = factory?.makeLogInCoordinator(navigation: navigation,
+                                                         delegate: self)
+        logInCoordinator?.start()
+    }
+    
+    private func startMainTabBarCoordinator() {
+        mainTabBarCoordinator = factory?.makeTabBarCoordinator(navigation: navigation,
+                                                               delegate: self)
+        mainTabBarCoordinator?.start()
+    }
+    
 }
+
+//MARK: - LoginCoordinatorDelegate
 
 extension AppCoordinator: LoginCoordinatorDelegate {
     func didFinishLogin() {
-       startSomeCoordinator()
         navigation.viewControllers = []
         logInCoordinator = nil
+        startSomeCoordinator()
+    }
+}
+
+//MARK: - MainTabBarCoordinatorDelegate
+
+extension AppCoordinator: MainTabBarCoordinatorDelegate {
+    func didFinish() {
+        navigation.viewControllers = []
+        logInCoordinator = nil
+        startSomeCoordinator()
     }
 }

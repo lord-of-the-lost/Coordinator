@@ -19,6 +19,16 @@
 		60CE47332AFD299C0090458E /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CE47322AFD299C0090458E /* LoginFactory.swift */; };
 		60CE47362AFD2A530090458E /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CE47352AFD2A530090458E /* LoginCoordinator.swift */; };
 		60CE47382AFD2B360090458E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CE47372AFD2B360090458E /* LoginViewModel.swift */; };
+		60CE473D2AFD391C0090458E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CE473C2AFD391C0090458E /* MainTabBarController.swift */; };
+		60CE473F2AFD39720090458E /* MainTabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CE473E2AFD39720090458E /* MainTabBarFactory.swift */; };
+		60CE47412AFD3A810090458E /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CE47402AFD3A810090458E /* MainTabBarCoordinator.swift */; };
+		60CE47462AFD40E90090458E /* ItemSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CE47452AFD40E90090458E /* ItemSettingsViewModel.swift */; };
+		60CE47482AFD40FD0090458E /* SettingsViewNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CE47472AFD40FD0090458E /* SettingsViewNavigation.swift */; };
+		60CE474B2AFD41AC0090458E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CE474A2AFD41AC0090458E /* SettingsViewModel.swift */; };
+		60CE474E2AFD41D70090458E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CE474D2AFD41D70090458E /* SettingsViewController.swift */; };
+		60CE47502AFD46BB0090458E /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CE474F2AFD46BB0090458E /* SettingsFactory.swift */; };
+		60CE47522AFD46CB0090458E /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CE47512AFD46CB0090458E /* SettingsCoordinator.swift */; };
+		60CE47542AFD4D7E0090458E /* ItemTabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CE47532AFD4D7E0090458E /* ItemTabBarFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +46,16 @@
 		60CE47322AFD299C0090458E /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
 		60CE47352AFD2A530090458E /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		60CE47372AFD2B360090458E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		60CE473C2AFD391C0090458E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		60CE473E2AFD39720090458E /* MainTabBarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarFactory.swift; sourceTree = "<group>"; };
+		60CE47402AFD3A810090458E /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
+		60CE47452AFD40E90090458E /* ItemSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSettingsViewModel.swift; sourceTree = "<group>"; };
+		60CE47472AFD40FD0090458E /* SettingsViewNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewNavigation.swift; sourceTree = "<group>"; };
+		60CE474A2AFD41AC0090458E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		60CE474D2AFD41D70090458E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		60CE474F2AFD46BB0090458E /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
+		60CE47512AFD46CB0090458E /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		60CE47532AFD4D7E0090458E /* ItemTabBarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTabBarFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +118,8 @@
 			children = (
 				60CE471C2AFD23970090458E /* LaunchScreen */,
 				60CE47302AFD29780090458E /* Login */,
+				60CE47392AFD38EC0090458E /* MainTabBar */,
+				60CE47422AFD3E050090458E /* Settings */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -205,6 +227,78 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
+		60CE47392AFD38EC0090458E /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				60CE473A2AFD38F80090458E /* Composition */,
+				60CE473B2AFD39020090458E /* Presentation */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		60CE473A2AFD38F80090458E /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				60CE473E2AFD39720090458E /* MainTabBarFactory.swift */,
+				60CE47402AFD3A810090458E /* MainTabBarCoordinator.swift */,
+				60CE47532AFD4D7E0090458E /* ItemTabBarFactory.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		60CE473B2AFD39020090458E /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				60CE473C2AFD391C0090458E /* MainTabBarController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		60CE47422AFD3E050090458E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				60CE47442AFD3E180090458E /* Composition */,
+				60CE47432AFD3E0E0090458E /* Presentation */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		60CE47432AFD3E0E0090458E /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				60CE474C2AFD41C10090458E /* Controllers */,
+				60CE47492AFD41930090458E /* ViewModels */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		60CE47442AFD3E180090458E /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				60CE47512AFD46CB0090458E /* SettingsCoordinator.swift */,
+				60CE474F2AFD46BB0090458E /* SettingsFactory.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		60CE47492AFD41930090458E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				60CE47452AFD40E90090458E /* ItemSettingsViewModel.swift */,
+				60CE47472AFD40FD0090458E /* SettingsViewNavigation.swift */,
+				60CE474A2AFD41AC0090458E /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		60CE474C2AFD41C10090458E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				60CE474D2AFD41D70090458E /* SettingsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -276,15 +370,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				60CE472F2AFD26830090458E /* AppDIContainer.swift in Sources */,
+				60CE47542AFD4D7E0090458E /* ItemTabBarFactory.swift in Sources */,
 				60CE47232AFD245B0090458E /* AppCoordinator.swift in Sources */,
+				60CE473D2AFD391C0090458E /* MainTabBarController.swift in Sources */,
 				608704592AFD1DE7000795ED /* LoginViewController.swift in Sources */,
 				608704552AFD1DE7000795ED /* AppDelegate.swift in Sources */,
 				60CE472B2AFD25B30090458E /* AuthorizationService.swift in Sources */,
+				60CE47462AFD40E90090458E /* ItemSettingsViewModel.swift in Sources */,
+				60CE47502AFD46BB0090458E /* SettingsFactory.swift in Sources */,
 				60CE47212AFD24140090458E /* Coordinator.swift in Sources */,
+				60CE47482AFD40FD0090458E /* SettingsViewNavigation.swift in Sources */,
+				60CE473F2AFD39720090458E /* MainTabBarFactory.swift in Sources */,
 				60CE47362AFD2A530090458E /* LoginCoordinator.swift in Sources */,
+				60CE47522AFD46CB0090458E /* SettingsCoordinator.swift in Sources */,
 				60CE47332AFD299C0090458E /* LoginFactory.swift in Sources */,
+				60CE474E2AFD41D70090458E /* SettingsViewController.swift in Sources */,
 				60CE47382AFD2B360090458E /* LoginViewModel.swift in Sources */,
+				60CE47412AFD3A810090458E /* MainTabBarCoordinator.swift in Sources */,
 				60CE47272AFD25050090458E /* AppFactory.swift in Sources */,
+				60CE474B2AFD41AC0090458E /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
