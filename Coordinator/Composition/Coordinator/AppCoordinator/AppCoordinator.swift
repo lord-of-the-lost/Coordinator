@@ -12,6 +12,7 @@ class AppCoordinator: Coordinator {
     var window: UIWindow?
     var factory: AppFactory?
     var autharization: SessionCheckerAuth?
+    private var logInCoordinator: Coordinator?
     
     init(navigation: UINavigationController, window: UIWindow?, factory: AppFactory?, autharization: AuthorizationService?) {
         self.navigation = navigation
@@ -21,8 +22,31 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        print("start")
+        configWindow()
+        startSomeCoordinator()
     }
     
+    private func configWindow() {
+        window?.rootViewController = navigation
+        window?.makeKeyAndVisible()
+    }
     
+    private func startSomeCoordinator() {
+        guard let autharization else { return }
+        if autharization.isSessionActive {
+            print("show TabBar")
+        } else {
+            logInCoordinator = factory?.makeLogInCoordinator(navigation: navigation,
+                                                                 delegate: self)
+            logInCoordinator?.start()
+        }
+    }
+}
+
+extension AppCoordinator: LoginCoordinatorDelegate {
+    func didFinishLogin() {
+       startSomeCoordinator()
+        navigation.viewControllers = []
+        logInCoordinator = nil
+    }
 }
