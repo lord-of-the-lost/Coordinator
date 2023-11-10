@@ -13,8 +13,8 @@ protocol SettingsCoordinatorDelegate: AnyObject {
 
 final class SettingsCoordinator: Coordinator {
     var navigation: UINavigationController
-    private var factory: SettingsFactory
-    private weak var delegate: SettingsCoordinatorDelegate?
+    var factory: SettingsFactory
+    weak var delegate: SettingsCoordinatorDelegate?
     
     init(navigation: UINavigationController, factory: SettingsFactory, delegate: SettingsCoordinatorDelegate?) {
         self.navigation = navigation
@@ -36,9 +36,9 @@ extension SettingsCoordinator: SettingsViewControllerCoordinator {
         case .userConfiguration:
             break
         case .account:
-            break
+            navigation.pushViewController(factory.makeAccountViewController(), animated: true)
         case .theme:
-            break
+            navigation.pushViewController(factory.makeThemeViewController(), animated: true)
         case .logOut:
             delegate?.didTapLogOut()
         case .noNavigation:
