@@ -12,7 +12,8 @@ protocol ParentCoordinator: AnyObject {
 }
 
 extension ParentCoordinator {
-    func addChildCoordinatorStart(_ childCoordinator: Coordinator) {
+    func addChildCoordinatorStart(_ childCoordinator: Coordinator?) {
+        guard let childCoordinator else { return }
         childCoordinators.append(childCoordinator)
         childCoordinator.start()
     }

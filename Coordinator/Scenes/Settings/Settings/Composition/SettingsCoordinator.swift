@@ -15,6 +15,7 @@ final class SettingsCoordinator: Coordinator {
     var navigation: Navigation
     var factory: SettingsFactory
     weak var delegate: SettingsCoordinatorDelegate?
+    var childCoordinators: [Coordinator] = []
     
     init(navigation: Navigation, factory: SettingsFactory, delegate: SettingsCoordinatorDelegate?) {
         self.navigation = navigation
@@ -29,12 +30,13 @@ final class SettingsCoordinator: Coordinator {
         factory.makeItemTabBar(navigation: navigation)
     }
 }
-
+extension SettingsCoordinator: ParentCoordinator { }
+    
 extension SettingsCoordinator: SettingsViewControllerCoordinator {
     func didSelect(settingsViewNavigation: SettingsViewNavigation) {
         switch settingsViewNavigation {
         case .userConfiguration:
-            break
+            callConfigurationCoordinator()
         case .account:
             navigation.pushViewController(factory.makeAccountViewController(), animated: true)
         case .theme:
@@ -44,5 +46,22 @@ extension SettingsCoordinator: SettingsViewControllerCoordinator {
         case .noNavigation:
             break
         }
+    }
+    
+    private func callConfigurationCoordinator() {
+       let userConfigurationCoordinator = factory.makeUserConfigurationCoordinator(delegate: self)
+        addChildCoordinatorStart(userConfigurationCoordinator)
+        navigation.present(userConfigurationCoordinator.navigation.rootViewController, animated: true)
+        userConfigurationCoordinator.navigation.dissmissNavigation = { [weak self] in
+            self?.removeChildCoordinator(userConfigurationCoordinator)
+        }
+    }
+}
+
+extension SettingsCoordinator: UserConfigurationCoordinatorDelegate {
+    func didFinish(childCoordinator: Coordinator) {
+        childCoordinator.navigation.dissmissNavigation = nil
+        removeChildCoordinator(childCoordinator)
+        navigation.dismiss(animated: true)
     }
 }
