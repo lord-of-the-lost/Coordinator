@@ -12,11 +12,11 @@ protocol LoginCoordinatorDelegate: AnyObject {
 }
 
 final class LoginCoordinator: Coordinator {
-    var navigation: UINavigationController
+    var navigation: Navigation
     var factory: LoginFactory
     weak var delegate: LoginCoordinatorDelegate?
     
-    init(navigation: UINavigationController, 
+    init(navigation: Navigation, 
          factory: LoginFactory,
          delegate: LoginCoordinatorDelegate) {
         self.navigation = navigation

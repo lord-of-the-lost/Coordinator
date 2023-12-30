@@ -9,7 +9,7 @@ import UIKit
 
 protocol CommunitiesFactory {
     func makeCommunitiesViewController() -> UIViewController
-    func makeItemTabBar(navigation: UINavigationController)
+    func makeItemTabBar(navigation: Navigation)
 }
 
 struct CommunitiesFactoryImp: CommunitiesFactory {
@@ -19,7 +19,7 @@ struct CommunitiesFactoryImp: CommunitiesFactory {
         return controller
     }
     
-    func makeItemTabBar(navigation: UINavigationController) {
+    func makeItemTabBar(navigation: Navigation) {
         makeItemTabBar(navigation: navigation, title: "Communities", image: "person.3", selectedImage: "person.3.fill")
     }
 }

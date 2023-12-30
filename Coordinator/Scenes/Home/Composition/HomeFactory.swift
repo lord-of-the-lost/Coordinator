@@ -8,8 +8,9 @@
 import UIKit
 
 protocol HomeFactory {
-    func  makeHomeViewController(coordinator: HomeViewControllerCoordinator) -> UIViewController
-    func makeItemTabBar(navigation: UINavigationController)
+    func makeHomeViewController(coordinator: HomeViewControllerCoordinator) -> UIViewController
+    func makeItemTabBar(navigation: Navigation)
+    func makePostDetailsCoordinator(navigation: Navigation, id: Int, parentCoordinator: ParentCoordinator?) -> Coordinator
 }
 
 struct HomeFactoryImp: HomeFactory {
@@ -22,11 +23,17 @@ struct HomeFactoryImp: HomeFactory {
     }
     
     
-    func makeItemTabBar(navigation: UINavigationController) {
+    func makeItemTabBar(navigation: Navigation) {
         makeItemTabBar(navigation: navigation,
                        title: "Home",
                        image: "house",
                        selectedImage: "house.fill")
+    }
+    
+    func makePostDetailsCoordinator(navigation: Navigation, id: Int, parentCoordinator: ParentCoordinator?) -> Coordinator {
+        let factory = PostDetailsFactory(id: id)
+        let coordinator = PostDetailsCoordinator(navigation: navigation, factory: factory, parentCoordinator: parentCoordinator)
+        return coordinator
     }
 }
 

@@ -20,10 +20,16 @@ struct MyPostFactory: ItemTabBarFactory {
         NewPostViewController(coordinator: coordinator)
     }
     
-    func makeItemTabBar(navigation: UINavigationController) {
+    func makeItemTabBar(navigation: Navigation) {
         makeItemTabBar(navigation: navigation,
                        title: "MyPosts",
                        image: "list.bullet.rectangle.portrait",
                        selectedImage: "list.bullet.rectangle.portrait.fill")
+    }
+    
+    func makePostDetailsCoordinator(navigation: Navigation, id: Int, parentCoordinator: ParentCoordinator?) -> Coordinator {
+        let factory = PostDetailsFactory(id: id)
+        let coordinator = PostDetailsCoordinator(navigation: navigation, factory: factory, parentCoordinator: parentCoordinator)
+        return coordinator
     }
 }

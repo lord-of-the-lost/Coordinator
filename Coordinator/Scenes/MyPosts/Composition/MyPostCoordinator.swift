@@ -8,13 +8,14 @@
 import UIKit
 
 final class MyPostCoordinator: Coordinator {
-    var navigation: UINavigationController
+    var navigation: Navigation
+    var childCoordinators: [Coordinator] = []
     private let factory: MyPostFactory
     private let mediator: MyPostMediator
     
-    init(navigation: UINavigationController,
+    init(navigation: Navigation,
          factory: MyPostFactory,
-         medeiator: MyPostMediator ) {
+         medeiator: MyPostMediator) {
         self.navigation = navigation
         self.factory = factory
         self.mediator = medeiator
@@ -30,7 +31,8 @@ final class MyPostCoordinator: Coordinator {
 
 extension MyPostCoordinator: MyPostsViewControllerCoordinator {
     func didSelectPost(id: Int) {
-        
+        let postDetailsCoordinator = factory.makePostDetailsCoordinator(navigation: navigation, id: id, parentCoordinator: self)
+        addChildCoordinatorStart(postDetailsCoordinator)
     }
     
     func didTapAddNewPostButton() {
@@ -45,3 +47,5 @@ extension MyPostCoordinator: NewPostViewControllerCoordinator {
         mediator.updateController(title: title, navigation: navigation)
     }
 }
+
+extension MyPostCoordinator: ParentCoordinator {}

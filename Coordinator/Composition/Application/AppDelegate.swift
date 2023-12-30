@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         appDIContainer = AppDIContainer()
         appFactory = AppFactory(appDIContainer: appDIContainer)
-        appCoordinator = AppCoordinator(navigation: UINavigationController(),
+        appCoordinator = AppCoordinator(navigation: NavigationImp(rootViewController: UINavigationController()),
                                         window: window,
                                         factory: appFactory,
                                         autharization: appDIContainer?.authorization)

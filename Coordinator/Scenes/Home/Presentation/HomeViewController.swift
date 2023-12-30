@@ -9,7 +9,6 @@ import UIKit
 
 protocol HomeViewControllerCoordinator: AnyObject {
     func didSelectPost(id: Int)
-    func didTapAddNewPostButton()
 }
 
 final class HomeViewController: UICollectionViewController {
